@@ -51,13 +51,50 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
-
-
+```
+Developed by:D.Amarnath Reddy
+Registration no:212221240012
+```
+## Program
+```
+#include "main.h"
+#include "stdbool.h"
+bool button_status;
+void push_button();
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void){
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    while (1){
+	       pushbutton();
+    }
+}
+void pushbutton()
+{
+	button_status = HAL_GPIO_ReadPin(GPIOC , GPIO_PIN_13);
+	if(button_status == 0){
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET);
+	HAL_Delay(1000);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET);
+	HAL_Delay(1000);
+	}
+	else{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET);
+	}
+}
+```
 
 ## Output  :
  
- 
- 
- 
+ ## When NOT Clicked :
+ ![image](https://github.com/Dhanireddy-Amarnthreddy/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/94165103/d0a2d96a-df6d-405b-a6d5-56de786a6168)
+## When Clicked :
+![image](https://github.com/Dhanireddy-Amarnthreddy/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/94165103/16e0131f-4596-4fd3-b9ee-d8ea493cceca)
+
+ ## Case 2: Off State:
+ ![image](https://github.com/Dhanireddy-Amarnthreddy/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/94165103/ab9d58e1-d93e-4832-aec2-a76f0cefbb5b)
+
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
